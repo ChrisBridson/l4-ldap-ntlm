@@ -1,3 +1,13 @@
+Changes
+============
+Fork of https://github.com/wells/l4-ldap-ntlm 
+Additions:
+* Authentication bug fixes
+* Modifications to config file processing
+** Dynamic groups with differing levels
+** Changed 'type' key to 'level' ro represent access level
+
+
 l4-ldap-ntlm
 ============
 
@@ -12,7 +22,7 @@ To install this in your application add the following to your `composer.json` fi
 
 ```json
 require {
-	"wells/l4-ldap-ntlm": "dev-master"
+	"ChrisB/l4-ldap-ntlm": "dev-master"
 }
 ```
 
@@ -22,7 +32,7 @@ Once you have finished downloading the package from Packagist.org you need to te
 
 Open `app/config/app.php` and add:
 
-`Wells\L4LdapNtlm\L4LdapNtlmServiceProvider`
+`ChrisB\L4LdapNtlm\L4LdapNtlmServiceProvider`
 
 This tells Laravel 4 to use the service provider from the vendor folder.
 
@@ -37,7 +47,7 @@ Add the following config into your `app/config/auth.php` file
 
 ```js
 /**
- * LDAP Configuration for wells/l4-ldap-ntlm
+ * LDAP Configuration for ChrisB/l4-ldap-ntlm
  */
 'ldap' => array(
 	// Domain controller (host), Domain to search (domain), 
@@ -59,14 +69,43 @@ Add the following config into your `app/config/auth.php` file
 		'memberof'
 	),
 
-	// Optionally require groups to gain auth view access
-	'groups' => array('AuthViewers'),
+    // New dynamic group structure, can have any number of groups
+    // level denotes a number/string for use in your app as neccessary.
+    'group_levels' => array(
+            'users' => array(
+                'level'=>0,
+                'description'=>'General Users',
+                'groups'=>array(
+                        'group1',
+                        'CN=group2,OU=AnotherOU,OU=Groups,DC=domain,DC=com',
+                    ),
+            ),
+            'super_users' => array(
+                'level'=>1,
+                'description'=>'Users with additional privs.',
+                'groups'=>array(
+                    'group3',
+                    'CN=group4,OU=Super,OU=Groups,DC=domain,DC=com',
+                ),
+            ),
+            'admins' => array(
+                'level'=>2,
+                'description'=>'The Admin Group',
+                'groups'=>array(
+                        'group5',
+                        'CN=group6,OU=Admins,OU=Groups,DC=domain,DC=com',
+                ),
+            ),
+            // Denote username by the 'user' key
+            'owners' => array(
+                'level'=>10,
+                'user'=>true,
+                'description'=>'The Owners',
+                'groups'=>array('userxyz','userabc')
+            ),
+    ),
 
-	// Optionally require group admins
-	'admin_groups' => array('IT'),
 
-	// Optionally require owners/admins (username)
-	'owners' => array('ceo'),
 ),
 ```
 
