@@ -32,7 +32,7 @@ Once you have finished downloading the package from Packagist.org you need to te
 
 Open `app/config/app.php` and add:
 
-`wells\L4LdapNtlm\L4LdapNtlmServiceProvider`
+`Wells\L4LdapNtlm\L4LdapNtlmServiceProvider`
 
 This tells Laravel 4 to use the service provider from the vendor folder.
 
