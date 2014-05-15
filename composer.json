@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-0": {
-            "wells\\L4LdapNtlm": "src/"
+            "Wells\\L4LdapNtlm": "src/"
         }
     },
     "minimum-stability": "dev"
