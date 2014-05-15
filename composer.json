@@ -1,9 +1,9 @@
 {
-    "name": "ChrisB/l4-ldap-ntlm",
+    "name": "nbip/l4-ldap-ntlm",
     "type": "library",
     "description": "An LDAP/Active Directory/NTLM authentication driver for Laravel 4. fork of wells/l4-ldap-ntlm ",
     "keywords": ["laravel", "L4", "LDAP", "Authentication", "Laravel 4", "auth"],
-    "homepage": "https://github.com/ChrisBridson/l4-ldap-ntlm",
+    "homepage": "https://github.com/nbipridson/l4-ldap-ntlm",
     "license": "MIT",
     "authors": [
         {
@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-0": {
-            "ChrisB\\L4LdapNtlm": "src/"
+            "nbip\\L4LdapNtlm": "src/"
         }
     },
     "minimum-stability": "dev"
