@@ -22,7 +22,7 @@ To install this in your application add the following to your `composer.json` fi
 
 ```json
 require {
-	"nbip/l4-ldap-ntlm": "dev-master"
+	"wells/l4-ldap-ntlm": "dev-master"
 }
 ```
 
@@ -32,7 +32,7 @@ Once you have finished downloading the package from Packagist.org you need to te
 
 Open `app/config/app.php` and add:
 
-`nbip\L4LdapNtlm\L4LdapNtlmServiceProvider`
+`wells\L4LdapNtlm\L4LdapNtlmServiceProvider`
 
 This tells Laravel 4 to use the service provider from the vendor folder.
 
@@ -47,7 +47,7 @@ Add the following config into your `app/config/auth.php` file
 
 ```js
 /**
- * LDAP Configuration for nbip/l4-ldap-ntlm
+ * LDAP Configuration for wells/l4-ldap-ntlm
  */
 'ldap' => array(
 	// Domain controller (host), Domain to search (domain), 
